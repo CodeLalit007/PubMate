@@ -24,8 +24,8 @@
 
 
 
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
+import javax.swing.ImageIcon;
 public class Rum extends Beverage {
 	private String rum;
 	String[] rums = {"Old Monk","Bacardi White"};
@@ -33,8 +33,9 @@ public class Rum extends Beverage {
 	public Rum(String size,int amount,Label lbl) {
 		super(size,amount);
 		try {
+			ImageIcon icon = new ImageIcon("img/rum.png");
 			rum = (String) JOptionPane.showInputDialog(lbl,"Select a Rum.","Select a Rum",
-					JOptionPane.QUESTION_MESSAGE,null,rums,rums[0]);
+					JOptionPane.QUESTION_MESSAGE,icon,rums,rums[0]);
 			//Creates a pop up that asks to the user, from which rum he/she wants his/her drink. Takes lbl as a paramater to display the pop up on the frame
 			//If he/she clicks on "OK" following codes will be executed.
 			double price;

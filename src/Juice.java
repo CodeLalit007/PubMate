@@ -1,5 +1,5 @@
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
+import javax.swing.ImageIcon;
 public class Juice extends Beverage {
     private String juice;
     String[] juices = {"Pineapple","Orange","Plum"};
@@ -7,8 +7,9 @@ public class Juice extends Beverage {
     public Juice(String size,int amount,Label lbl) {
         super(size,amount);
         try {
+            ImageIcon icon = new ImageIcon("img/juice.png");
             juice = (String) JOptionPane.showInputDialog(lbl,"Select a Juice.","Select a Juice",
-                    JOptionPane.QUESTION_MESSAGE,null,juices,juices[0]);
+                    JOptionPane.QUESTION_MESSAGE,icon,juices,juices[0]);
             //Creates a pop up that asks to the user, from which juice he/she wants his/her drink. Takes lbl as a paramater to display the pop up on the frame
             //If he/she clicks on "OK" following codes will be executed.
             double price;

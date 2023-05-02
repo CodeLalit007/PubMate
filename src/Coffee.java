@@ -1,10 +1,11 @@
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
+//import javax.swing.ImageIcon;
 public class Coffee extends Beverage {
 	private boolean milk; 
 
 	public Coffee(String size,int amount,Label lbl) {
 		super(size,amount);
+		//ImageIcon icon = new ImageIcon("img/coffee.png");
 		if(JOptionPane.showConfirmDialog(lbl, "Would you like milk?","Milk",JOptionPane.YES_NO_OPTION)==0) milk=true;
 		else milk=false;
 		double price;

@@ -1,25 +1,18 @@
 // PUB MATE
 
-//import java.awt.Graphics;
-//import java.awt.Image;
-//import java.awt.Toolkit;
-//import java.io.IOException;
-//import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.IOException;
+import javax.swing.JPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
+import javax.swing.*;
 public class Label extends JFrame implements ActionListener{
-//	Image img = Toolkit.getDefaultToolkit().getImage("D:/xownload.png");
+	Image img = Toolkit.getDefaultToolkit().getImage("img/bg.png");
 	private static final long serialVersionUID = 1L;
 	private JLabel lblSize,lblBev,lblGlass,lblReport;
 	private JComboBox<String> size;
@@ -30,22 +23,24 @@ public class Label extends JFrame implements ActionListener{
 	int amount_of;
 	ArrayList<Beverage> list_of_bvr = new ArrayList<Beverage>();
 	public Label(){
-		// this.setContentPane(new JPanel() {
-		// 	@Override
-		// 	public void paintComponent(Graphics g) {
-		// 	   super.paintComponent(g);
-		// 	   g.drawImage(img, 0, 0, null);
-		// 	   setSize(600,400);
-		// 	   setLocationRelativeTo(null);
-		// 	}
-		//  });
+		 this.setContentPane(new JPanel() {
+		 	@Override
+		 	public void paintComponent(Graphics g) {
+		 	   super.paintComponent(g);
+		 	   g.drawImage(img, 0, 0, null);
+		 	   setSize(800,600);
+		 	   setLocationRelativeTo(null);
+		 	}
+		  });
 		setLayout(null);
 		setSize(800,600);
 		setLocationRelativeTo(null);
-		setTitle("Order");
+		//setTitle("Order");
+		setUndecorated(true);
 		init();
 		btnAdd.addActionListener(this); 
 		btnOrder.addActionListener(this);
+		setUndecorated(false);
 		setVisible(true);
 	}
 	
@@ -72,46 +67,57 @@ public class Label extends JFrame implements ActionListener{
 		rdWhisky = new JRadioButton("Whisky");
 		rdWhisky.setSize(75, 50);
 		rdWhisky.setLocation(100, 110);
+		rdWhisky.setOpaque(false);
 		add(rdWhisky);
 		
 		rdWater = new JRadioButton("Water");
 		rdWater.setSize(75, 50);
 		rdWater.setLocation(175, 110);
+		rdWater.setOpaque(false);
 		add(rdWater);
 		
 		rdRum = new JRadioButton("Rum");
 		rdRum.setSize(75, 50);
 		rdRum.setLocation(250, 110);
+		rdRum.setOpaque(false);
 		add(rdRum);
 		
 		rdCoffee = new JRadioButton("Coffee");
 		rdCoffee.setSize(75, 50);
 		rdCoffee.setLocation(325, 110);
+		rdCoffee.setOpaque(false);
 		add(rdCoffee);
 
 		rdBeer = new JRadioButton("Beer");
 		rdBeer.setSize(75, 50);
 		rdBeer.setLocation(250, 150);
+		rdBeer.setOpaque(false);
+		//rdBeer.setContentAreaFilled(false);
+		//rdBeer.setBorderPainted(false);
 		add(rdBeer);
 
 		rdJuice = new JRadioButton("Juice");
 		rdJuice.setSize(75, 50);
 		rdJuice.setLocation(100, 150);
+		rdJuice.setOpaque(false);
 		add(rdJuice);
 
 		rdMilkshake = new JRadioButton("Milkshake");
 		rdMilkshake.setSize(115, 50);
 		rdMilkshake.setLocation(325, 150);
+		rdMilkshake.setOpaque(false);
 		add(rdMilkshake);
 
 		rdSmoothie = new JRadioButton("Smoothie");
 		rdSmoothie.setSize(115, 50);
 		rdSmoothie.setLocation(400, 110);
+		rdSmoothie.setOpaque(false);
 		add(rdSmoothie);
 
 		rdVodka = new JRadioButton("Vodka");
 		rdVodka.setSize(75, 50);
 		rdVodka.setLocation(175, 150);
+		rdVodka.setOpaque(false);
 		add(rdVodka);
 		
 		btnGroup.add(rdWhisky);
@@ -175,10 +181,10 @@ public class Label extends JFrame implements ActionListener{
 					btnOrder.setEnabled(true);
 				}
 				catch(NumberFormatException e1) {//if written data in TextField can't be converted to an integer[String,char,double etc...]
-					JOptionPane.showMessageDialog(this, "Enter an integer as amount");
+					JOptionPane.showMessageDialog(this, "Enter an integer as amount","Error",JOptionPane.ERROR_MESSAGE);
 				}
 			}	
-			else { JOptionPane.showMessageDialog(this, "Choose a drink type and enter an amount");
+			else { JOptionPane.showMessageDialog(this, "Choose a drink type and enter an amount","Error",JOptionPane.ERROR_MESSAGE);
 			//if none of the radio buttons are selected or the textField is empty
 			}
 		}
@@ -193,7 +199,7 @@ public class Label extends JFrame implements ActionListener{
 				report = report + " - "+totalprice_of_bvg+" ₹\n";
 			}
 			JOptionPane.showMessageDialog(this, report);
-			JOptionPane.showMessageDialog(this,	 "You should pay "+pay+"₹");
+			JOptionPane.showMessageDialog(this,	 "You should pay "+pay+"₹"+" to the bartender in cash");
 			lblReport.setText(null);
 			btnOrder.setEnabled(false);
 			list_of_bvr.clear();
@@ -201,6 +207,12 @@ public class Label extends JFrame implements ActionListener{
 	}
 
 	public static void main(String[] args) {
+
+//		Image img1 = Toolkit.getDefaultToolkit().getImage("img/bill.png");
+//		JFrame f= new JFrame("Bill");
+//		f.setSize(300, 514);
+//		f.setVisible(true);
 		new Label();
 	}
 }
+

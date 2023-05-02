@@ -1,5 +1,5 @@
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
+import javax.swing.ImageIcon;
 public class Whisky extends Beverage {
 	private String whisky;
 	String[] whiskeys = {"Johnnie Walker Blue Label","Johnnie Walker Double Black","Jack Daniel","Johnnie Walker Red Label","Vat 69"};
@@ -7,8 +7,9 @@ public class Whisky extends Beverage {
 	public Whisky(String size,int amount,Label lbl) {
 		super(size,amount);
 		try {
+			ImageIcon icon = new ImageIcon("img/whisky.png");
 			whisky = (String) JOptionPane.showInputDialog(lbl,"Select a Whisky.","Select a Whisky",
-					JOptionPane.QUESTION_MESSAGE,null,whiskeys,whiskeys[0]);
+					JOptionPane.QUESTION_MESSAGE,icon,whiskeys,whiskeys[0]);
 			//Creates a pop up that asks to the user, from which whisky he/she wants his/her drink. Takes lbl as a paramater to display the pop up on the frame
 			//If he/she clicks on "OK" following codes will be executed.
 			double price;
