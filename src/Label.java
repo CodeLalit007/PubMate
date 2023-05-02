@@ -58,7 +58,7 @@ public class Label extends JFrame implements ActionListener{
 		String[] sizes = {"Small / 30ml","Medium / 60ml","Large / 90ml"};
 		size = new JComboBox<String>(sizes);//
 		size.setSelectedIndex(0);//default selection is Small / 30ml
-		size.setSize(100, 25);
+		size.setSize(130, 25);
 		size.setLocation(100, 50);
 		add(size);
 		
